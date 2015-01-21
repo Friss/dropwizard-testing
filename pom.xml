@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <dropwizard.version>0.7.1</dropwizard.version>
   </properties>
 
   <dependencies>
@@ -22,10 +23,25 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>com.yammer.dropwizard</groupId>
-    	<artifactId>dropwizard-core</artifactId>
-    	<version>0.6.2</version>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-core</artifactId>
+        <version>${dropwizard.version}</version>
     </dependency>
+    <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-jdbi</artifactId>
+        <version>${dropwizard.version}</version>
+    </dependency>
+    <dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>1.4.185</version>
+	</dependency>
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.6</version>
+	</dependency>
   </dependencies>
   <build>
   	<plugins>

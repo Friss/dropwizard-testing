@@ -1,4 +1,4 @@
-package com.friss.example.service.hello;
+package com.friss.example.service.resources;
 
 import com.friss.example.service.config.MessagesConfiguration;
 

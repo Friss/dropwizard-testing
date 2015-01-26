@@ -10,7 +10,6 @@ import io.dropwizard.setup.Environment;
 
 import com.friss.example.service.config.ExampleServiceConfiguration;
 import com.friss.example.service.dao.PersonDAO;
-import com.friss.example.service.resources.HelloResource;
 import com.friss.example.service.resources.PersonResource;
 
 public class ExampleService extends Application<ExampleServiceConfiguration> {
@@ -38,9 +37,6 @@ public class ExampleService extends Application<ExampleServiceConfiguration> {
         final PersonDAO personDAO = jdbi.onDemand(PersonDAO.class);
         final PersonResource personResource = new PersonResource(personDAO);
         env.jersey().register(personResource);
-        
-        final HelloResource helloResource = new HelloResource(conf.getMessages());
-    	env.jersey().register(helloResource);
     }
 
 }

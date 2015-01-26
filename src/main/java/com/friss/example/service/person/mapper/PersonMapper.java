@@ -13,6 +13,17 @@ public class PersonMapper implements ResultSetMapper<Person>
     {
         return new Person()
                 .setId(resultSet.getInt("ID"))
-                .setName(resultSet.getString("NAME"));
+                .setFirstName(resultSet.getString("FIRSTNAME"))
+        		.setLastName(resultSet.getString("LASTNAME"))
+        		.setEmail(resultSet.getString("EMAIL"))
+        		.setCountry(resultSet.getString("COUNTRY"))
+        		.setCompanyName(resultSet.getString("COMPANYNAME"))
+        		.setJobTitle(resultSet.getString("JOBTITLE"))
+        		.setBitcoinAddress(resultSet.getString("BITCOINADDRESS"))
+        		.setCity(resultSet.getString("CITY"))
+        		.setState(resultSet.getString("STATE"))
+        		.setZipcode(resultSet.getString("ZIPCODE"))
+        		.setAddress(resultSet.getString("ADDRESS"))
+        		.setIpAddress(resultSet.getString("IPADDRESS"));
     }
 }

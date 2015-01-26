@@ -2,10 +2,14 @@ package com.friss.example.service.resources;
 
 import com.friss.example.service.person.Person;
 import com.friss.example.service.dao.PersonDAO;
+import com.friss.example.service.exceptions.ObjectNotFoundException;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import org.json.simple.JSONObject;
+
 import java.util.List;
 
 @Path("/person")
@@ -24,10 +28,20 @@ public class PersonResource {
         return personDAO.getAll();
     }
 
-    @GET
+    @SuppressWarnings("unchecked")
+	@GET
     @Path("/{id}")
     public Person get(@PathParam("id") Integer id){
-        return personDAO.findById(id);
+        Person person = personDAO.findById(id);
+        if (person != null) {
+            return person;
+        }else{
+        	JSONObject obj = new JSONObject();
+            obj.put("id", id);
+            obj.put("status", "error");
+            obj.put("errorMsg", "Person not found.");
+            throw new ObjectNotFoundException(obj);
+        }
     }
 
     @POST

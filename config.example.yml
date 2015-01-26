@@ -1,14 +1,12 @@
-messages:
-  hello: Hello BITCHES!
 database:
   driverClass: com.mysql.jdbc.Driver
   user: dropwizard
-  password: wizard
-  url: jdbc:mysql://192.168.1.205/dropwizard
+  password: password
+  url: jdbc:mysql://localhost/dropwizard
   properties:
     charSet: UTF-8
   maxWaitForConnection: 1s
-  validationQuery: "SELECT * FROM PERSON"
+  validationQuery: "SELECT * FROM PEOPLE LIMIT 1"
   minSize: 8
   maxSize: 32
   checkConnectionWhileIdle: false

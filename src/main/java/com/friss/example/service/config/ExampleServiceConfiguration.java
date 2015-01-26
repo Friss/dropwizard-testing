@@ -8,19 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ExampleServiceConfiguration extends Configuration {
-
-    @Valid
-    private MessagesConfiguration messages;
-
-    public MessagesConfiguration getMessages() {
-        return messages;
-    }
-
-    public void setMessages(MessagesConfiguration messages) {
-        this.messages = messages;
-    }
-    
+public class ExampleServiceConfiguration extends Configuration {    
     @Valid
     @NotNull
     @JsonProperty
@@ -30,3 +18,5 @@ public class ExampleServiceConfiguration extends Configuration {
         return database;
     }
 }
+
+    

@@ -1,5 +1,6 @@
 package com.friss.example.service.resources;
 
+import com.codahale.metrics.annotation.Timed;
 import com.friss.example.service.person.Person;
 import com.friss.example.service.dao.PersonDAO;
 import com.friss.example.service.exceptions.ObjectNotFoundException;
@@ -7,6 +8,7 @@ import com.friss.example.service.exceptions.ObjectNotFoundException;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
 
 import org.json.simple.JSONObject;
 
@@ -24,13 +26,15 @@ public class PersonResource {
     }
 
     @GET
+  	 @Timed
     public List<Person> getAll(){
         return personDAO.getAll();
     }
 
     @SuppressWarnings("unchecked")
-	@GET
+	 @GET
     @Path("/{id}")
+    @Timed
     public Person get(@PathParam("id") Integer id){
         Person person = personDAO.findById(id);
         if (person != null) {
@@ -45,6 +49,7 @@ public class PersonResource {
     }
 
     @POST
+  	 @Timed
     public Person add(@Valid Person person) {
         int newId = personDAO.insert(person);
 
@@ -52,6 +57,7 @@ public class PersonResource {
     }
 
     @PUT
+  	 @Timed
     @Path("/{id}")
     public Person update(@PathParam("id") Integer id, @Valid Person person) {
         person = person.setId(id);
@@ -61,6 +67,7 @@ public class PersonResource {
     }
 
     @DELETE
+    @Timed
     @Path("/{id}")
     public void delete(@PathParam("id") Integer id) {
         personDAO.deleteById(id);

@@ -30,4 +30,7 @@ public interface PersonDAO {
     @SqlUpdate("insert into PEOPLE (FIRSTNAME, LASTNAME, EMAIL, COUNTRY, IPADDRESS, COMPANYNAME, JOBTITLE, BITCOINADDRESS, CITY, STATE, ZIPCODE, ADDRESS) values (:firstName, :lastName, :email, :country, :ipAddress, :companyName, :jobTitle, :bitcoinAddress, :city, :state, :zipcode, :address)")
     @GetGeneratedKeys
     int insert(@BindBean Person person);
+    
+    @SqlQuery("select * from PEOPLE where FIRSTNAME LIKE concat('%',:query,'%') or LASTNAME LIKE concat('%',:query,'%')")
+    List<Person> search(@Bind("query") String query);
 }

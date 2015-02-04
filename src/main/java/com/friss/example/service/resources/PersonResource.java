@@ -26,13 +26,20 @@ public class PersonResource {
     }
 
     @GET
-  	 @Timed
+  	@Timed
     public List<Person> getAll(){
         return personDAO.getAll();
     }
+    
+    @GET
+    @Path("/search/{query}")
+ 	@Timed
+    public List<Person> search(@PathParam("query") String query){
+       return personDAO.search(query);
+   }
 
     @SuppressWarnings("unchecked")
-	 @GET
+	@GET
     @Path("/{id}")
     @Timed
     public Person get(@PathParam("id") Integer id){
@@ -49,7 +56,7 @@ public class PersonResource {
     }
 
     @POST
-  	 @Timed
+  	@Timed
     public Person add(@Valid Person person) {
         int newId = personDAO.insert(person);
 
@@ -57,7 +64,7 @@ public class PersonResource {
     }
 
     @PUT
-  	 @Timed
+  	@Timed
     @Path("/{id}")
     public Person update(@PathParam("id") Integer id, @Valid Person person) {
         person = person.setId(id);

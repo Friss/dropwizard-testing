@@ -2,8 +2,8 @@ package com.friss.example.service.resources;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
 import javax.ws.rs.core.Response;
+
 import org.json.simple.JSONObject;
 
 @Path("/")
@@ -11,7 +11,8 @@ import org.json.simple.JSONObject;
 @Produces({MediaType.APPLICATION_JSON})
 public class IndexResource {
 
-    @GET
+    @SuppressWarnings("unchecked")
+	@GET
     public Response index(){
         JSONObject obj = new JSONObject();
         obj.put("status", "ok");
